@@ -1,16 +1,18 @@
-# ten_four
+# 10-4
 
-A new Flutter project.
+## Description
+An app that allows drivers on the road talk to each other in real time
 
-## Getting Started
+Have you ever wanted to talk to other drivers on the road to tell them to have a great day? Or maybe one day you're on a road trip and there's no  service available and to coordinate where to go while you're on the road. This is where 10-4 comes into play. Using the Agora API, you can talk to other users of the app on the road. Choose between multiple channels, log yourself in, and talk into your phone, and listen in to what everyone else is saying. It's like a personal walkie-talkie, but with a larger range.
 
-This project is a starting point for a Flutter application.
+## Software Used
+- Agora API
+- AuthO
+- Flutter/Dart
 
-A few resources to get you started if this is your first Flutter project:
+## Credits
+- Sid Sabhnani: [Github](https://github.com/sidsabh)
+- Nikshita Kurva: [Github](https://github.com/nikshitak)
+- Shriya Danam: [Github](https://github.com/shriyad27)
+- Vibha Kolathaya: [Github](https://github.com/vibha-k)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
