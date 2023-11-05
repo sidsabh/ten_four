@@ -35,7 +35,7 @@ clusters = [];
 num_users = 0;
 server_name = "tenfour_public";
 
-max_distance = 1;
+max_distance = 1; // 1 kilometer
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   var R = 6371; // Radius of the earth in km
@@ -73,6 +73,7 @@ app.post("/rtc", nocache, (req, resp) => {
   const privilegeExpireTime = currentTime + 3600;
   num_users += 1;
   channelName = server_name + "_" + clusters.length;
+  uid = num_users
 
   let token = null;
   for (cluster of clusters) {
@@ -86,11 +87,11 @@ app.post("/rtc", nocache, (req, resp) => {
     }
   }
   if (token == null) {
-    token = RtcTokenBuilder.buildTokenWithAccount(
+    token = RtcTokenBuilder.buildTokenWithUid(
       APP_ID,
       APP_CERTIFICATE,
       channelName,
-      num_users,
+      uid,
       RtcRole.PUBLISHER,
       privilegeExpireTime,
     );
@@ -104,10 +105,15 @@ app.post("/rtc", nocache, (req, resp) => {
   });
 
   console.log({ token: token, uid: num_users, channelName: channelName });
+  // return resp.json({
+  //   token: token,
+  //   uid: String(uid),
+  //   channelName: channelName,
+  // });
   return resp.json({
-    token: token,
-    uid: String(num_users),
-    channelName: channelName,
+    token: '007eJxTYNDOKeHlrb/E4OJm8GHpGYOsa0tvH6lkl3zqw271a8OyvWUKDOYpyYlmRsaGqRbJJiZJlsZJqcnJ5hbJyRZGSRZGFmaGFsfcUxsCGRnmCrxjYWSAQBCfm6EgJzWxODW+PL8om4EBAONiIaQ=',
+    uid: String(uid),
+    channelName: 'please_work',
   });
 });
 
@@ -143,8 +149,3 @@ console.log("Running on port ", port);
 //     message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'
 //   });
 // });
-
-// send
-// String channelName = 'ten_four_test';
-// String token = '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
-// String appId = '7dca6231e8c44b93becc78cc82b82861';
