@@ -3,7 +3,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
 class GoogleMapComponent extends StatefulWidget {
-  const GoogleMapComponent({Key? key}) : super(key: key);
+  final Function(LatLng) onUserLocationChanged; // Callback function
+
+  const GoogleMapComponent({Key? key, required this.onUserLocationChanged})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => GoogleMapState();
@@ -27,6 +30,8 @@ class GoogleMapState extends State<GoogleMapComponent> {
     double long = position.longitude;
 
     LatLng location = LatLng(lat, long);
+
+    widget.onUserLocationChanged(location);
 
     return location;
   }
@@ -58,7 +63,7 @@ class GoogleMapState extends State<GoogleMapComponent> {
             mapToolbarEnabled: true,
             circles: {
               Circle(
-                circleId: CircleId('userLocation'),
+                circleId: const CircleId('userLocation'),
                 center: snapshot.data!,
                 radius: 1000,
                 fillColor: Colors.blue.withOpacity(0.1),

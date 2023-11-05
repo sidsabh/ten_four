@@ -2,22 +2,29 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:agora_rtc_engine/agora_rtc_engine.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'components.dart';
 
-String channelName = 'ten_four_test';
-String token =
-    '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
-int uid = 0; // uid of the local user
+// String channelName = 'ten_four_test';
+// String token =
+//     '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
+// int uid = 0; // uid of the local user
 const String appId = '7dca6231e8c44b93becc78cc82b82861';
 
 class Call extends StatefulWidget {
-  const Call({Key? key}) : super(key: key);
+  String channelName;
+  String token;
+  int uid;
+
+  Call(
+      {Key? key,
+      required this.channelName,
+      required this.token,
+      required this.uid})
+      : super(key: key);
 
   @override
-  CallState createState() => CallState();
+  State<StatefulWidget> createState() => CallState();
 }
 
 class CallState extends State<Call> {
@@ -25,6 +32,10 @@ class CallState extends State<Call> {
   bool _isJoined = false; // Indicates if the local user has joined the channel
   late RtcEngine agoraEngine; // Agora engine instance
   bool _isMuted = false; // Indicates if the local user is muted
+
+  String get channelName => widget.channelName;
+  String get token => widget.token;
+  int get uid => widget.uid;
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>(); // Global key to access the scaffold
@@ -51,7 +62,7 @@ class CallState extends State<Call> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const Spacer(),
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -65,7 +76,7 @@ class CallState extends State<Call> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    
+
                     // space
                     const SizedBox(width: 10),
                     Image.asset(
@@ -81,7 +92,7 @@ class CallState extends State<Call> {
                   'assets/sound_waves.png',
                   height: 300,
                 ),
-                
+
                 Text(
                   'Public Channel: $channelName',
                   textAlign: TextAlign.center,
@@ -178,6 +189,8 @@ class CallState extends State<Call> {
     super.initState();
     // Set up an instance of Agora engine
     setupVoiceSDKEngine().then((_) {
+      print(
+          'channelName: $channelName, token: $token, uid: $uid, appId: $appId');
       // Join channel after initializing
       join();
     });
@@ -222,6 +235,7 @@ class CallState extends State<Call> {
   }
 
   void join() async {
+    print("joining ");
     // Set channel options including the client role and channel profile
     ChannelMediaOptions options = const ChannelMediaOptions(
       clientRoleType: ClientRoleType.clientRoleBroadcaster,
