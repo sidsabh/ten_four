@@ -30,70 +30,74 @@ class CallState extends State<Call> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scaffoldMessengerKey: scaffoldMessengerKey,
-      home: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Colors.black,
-                Colors.deepPurple,
-                Colors.red,
-              ],
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // image and texxt
-                  const Text(
-                    '10-4',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  // space
-                  const SizedBox(width: 10),
-                  Image.asset(
-                    'assets/radio_image.png',
-                    height: 50,
-                  ),
+    return FutureBuilder(
+      future: setupVoiceSDKEngine(),
+      builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+        return Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.black,
+                  Colors.deepPurple,
+                  Colors.red,
                 ],
               ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: Column(
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const Spacer(),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ButtonWidget(
-                      title: 'Leave',
-                      width: 250,
-                      color: Colors.grey,
-                      onPressed: () async {
-                        () => {leave()};
-                        Navigator.pop(context);
-                      },
+                  children: [
+                    // image and texxt
+                    const Text(
+                      '10-4',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    // space
+                    const SizedBox(width: 10),
+                    Image.asset(
+                      'assets/radio_image.png',
+                      height: 50,
                     ),
                   ],
                 ),
-              ),
-              const Spacer(),
-            ],
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ButtonWidget(
+                        title: 'Leave',
+                        width: 250,
+                        color: Colors.grey,
+                        onPressed: () async {
+                          () => {leave()};
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                statusWidget(),
+                const Spacer(),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -110,6 +114,12 @@ class CallState extends State<Call> {
 
     return Text(
       statusText,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 
@@ -117,7 +127,10 @@ class CallState extends State<Call> {
   void initState() {
     super.initState();
     // Set up an instance of Agora engine
-    setupVoiceSDKEngine();
+    setupVoiceSDKEngine().then((_) {
+      // Join channel after initializing
+      join();
+    });
   }
 
   Future<void> setupVoiceSDKEngine() async {
@@ -132,6 +145,7 @@ class CallState extends State<Call> {
     agoraEngine.registerEventHandler(
       RtcEngineEventHandler(
         onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
+          if (!mounted) return;
           showMessage(
               "Local user uid:${connection.localUid} joined the channel");
           setState(() {
@@ -139,6 +153,7 @@ class CallState extends State<Call> {
           });
         },
         onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
+          if (!mounted) return;
           showMessage("Remote user uid:$remoteUid joined the channel");
           setState(() {
             _remoteUid = remoteUid;
@@ -146,6 +161,7 @@ class CallState extends State<Call> {
         },
         onUserOffline: (RtcConnection connection, int remoteUid,
             UserOfflineReasonType reason) {
+          if (!mounted) return;
           showMessage("Remote user uid:$remoteUid left the channel");
           setState(() {
             _remoteUid = null;
@@ -171,6 +187,7 @@ class CallState extends State<Call> {
   }
 
   void leave() {
+    if (!mounted) return;
     setState(() {
       _isJoined = false;
       _remoteUid = null;

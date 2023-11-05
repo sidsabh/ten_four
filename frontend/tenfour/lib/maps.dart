@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-
 class GoogleMapComponent extends StatefulWidget {
-
   const GoogleMapComponent({Key? key}) : super(key: key);
 
   @override
@@ -56,8 +54,18 @@ class GoogleMapState extends State<GoogleMapComponent> {
             compassEnabled: true,
             indoorViewEnabled: true,
             buildingsEnabled: true,
-            trafficEnabled: true, 
+            trafficEnabled: true,
             mapToolbarEnabled: true,
+            circles: {
+              Circle(
+                circleId: CircleId('userLocation'),
+                center: snapshot.data!,
+                radius: 1000,
+                fillColor: Colors.blue.withOpacity(0.1),
+                strokeColor: Colors.blue,
+                strokeWidth: 1,
+              ),
+            },
           );
         } else {
           return const Center(
@@ -90,6 +98,7 @@ class GoogleMapState extends State<GoogleMapComponent> {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
 }

@@ -65,8 +65,7 @@ class JoinScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          Profile(logoutAction, user)),
+                      builder: (context) => Profile(logoutAction, user)),
                 );
               },
               // if user is null, display assets/icon.png else display user picture
@@ -91,14 +90,8 @@ class JoinScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => const Call()),
                   );
-                })
-            // InfoText(text: '4 people broadcasting'),
-            // ButtonWidget(
-            //     title: 'notify',
-            //     width: 265,
-            //     color: Colors.grey,
-            //     onPressed: () {}),
-            // InfoText(text: '10 people monitoring'),
+                }),
+            const InfoText(text: '1 mile radius')
           ],
         ),
       ),
@@ -121,7 +114,6 @@ class SwitchWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _SwitchWidgetState();
 }
 
-
 class InfoText extends StatelessWidget {
   final String text;
 
@@ -137,7 +129,7 @@ class InfoText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.circle, size: 12.0, color: Colors.orange),
+          const Icon(Icons.circle, size: 12.0, color: Colors.blue),
           const SizedBox(width: 8.0),
           Text(
             text,
