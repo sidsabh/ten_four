@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/agora_rtc_engine/agora_rtc_engine.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/agora_rtc_engine/agora_rtc_engine.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "agora_rtc_engine-Swift.h",
+      'external-contents': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/unextended-interface-header.h",
+    }]
+    }]
+}

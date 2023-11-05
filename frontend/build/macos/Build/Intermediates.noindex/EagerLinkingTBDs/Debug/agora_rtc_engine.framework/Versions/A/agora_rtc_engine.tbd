@@ -1,0 +1,46 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_agora_rtc_engineVersionNumber",
+            "_agora_rtc_engineVersionString"
+          ],
+          "objc_class": [
+            "AgoraRtcNgPlugin",
+            "TextureRender",
+            "PodsDummy_agora_rtc_engine",
+            "SimpleRef",
+            "VideoViewController",
+            "PlatformRenderPool"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/agora_rtc_engine.framework/Versions/A/agora_rtc_engine"
+      }
+    ],
+    "swift_abi": [
+      {
+        "abi": 7
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "11",
+        "target": "arm64-macos"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

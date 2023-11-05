@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/agora_rtc_engine-master.dia",
+    "emit-module-dependencies" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/agora_rtc_engine-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/agora_rtc_engine-master-emit-module.dia",
+    "swift-dependencies" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/agora_rtc_engine-master.swiftdeps"
+  },
+  "/Users/nikshita/.pub-cache/hosted/pub.dev/agora_rtc_engine-6.2.4/macos/Classes/File.swift" : {
+    "const-values" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.swiftconstvalues",
+    "dependencies" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.d",
+    "diagnostics" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.o",
+    "llvm-bc" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.bc",
+    "object" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.o",
+    "swift-dependencies" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File.swiftdeps",
+    "swiftmodule" : "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/agora_rtc_engine.build/Objects-normal/arm64/File~partial.swiftmodule"
+  }
+}

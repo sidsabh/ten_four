@@ -1,0 +1,10 @@
+framework module iris_method_channel {
+  umbrella header "iris_method_channel-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module iris_method_channel.__Swift {
+  exclude header "iris_method_channel-Swift.h"
+}

@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/iris_method_channel/iris_method_channel.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/iris_method_channel.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/iris_method_channel/iris_method_channel.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "iris_method_channel-Swift.h",
+      'external-contents': "/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Intermediates.noindex/Pods.build/Debug/iris_method_channel.build/unextended-interface-header.h",
+    }]
+    }]
+}

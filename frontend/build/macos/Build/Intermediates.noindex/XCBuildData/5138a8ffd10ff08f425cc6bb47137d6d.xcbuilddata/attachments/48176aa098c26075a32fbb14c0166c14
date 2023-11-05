@@ -1,0 +1,24 @@
+/Users/nikshita/hackutd/ten_four/frontend/macos/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh
+/Users/nikshita/hackutd/ten_four/frontend/macos/Pods/AgoraIrisRTC_macOS/AgoraRtcWrapper.framework
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/agora_rtc_engine/agora_rtc_engine.framework
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/iris_method_channel/iris_method_channel.framework
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/AIAEC/AgoraAiEchoCancellationExtension.framework/AgoraAiEchoCancellationExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/AINS/AgoraAiNoiseSuppressionExtension.framework/AgoraAiNoiseSuppressionExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/AudioBeauty/AgoraAudioBeautyExtension.framework/AgoraAudioBeautyExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/ClearVision/AgoraClearVisionExtension.framework/AgoraClearVisionExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/ContentInspect/AgoraContentInspectExtension.framework/AgoraContentInspectExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/DRM/AgoraDrmLoaderExtension.framework/AgoraDrmLoaderExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/FaceDetection/AgoraFaceDetectionExtension.framework/AgoraFaceDetectionExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/RtcBasic/AgoraRtcKit.framework/AgoraRtcKit
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/RtcBasic/AgoraCore.framework/AgoraCore
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/RtcBasic/Agorafdkaac.framework/Agorafdkaac
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/RtcBasic/Agoraffmpeg.framework/Agoraffmpeg
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/RtcBasic/AgoraSoundTouch.framework/AgoraSoundTouch
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/ScreenCapture/AgoraScreenCaptureExtension.framework/AgoraScreenCaptureExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/SpatialAudio/AgoraSpatialAudioExtension.framework/AgoraSpatialAudioExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VQA/AgoraVideoQualityAnalyzerExtension.framework/AgoraVideoQualityAnalyzerExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VideoCodecDec/AgoraVideoDecoderExtension.framework/AgoraVideoDecoderExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VideoCodecDec/video_dec.framework/video_dec
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VideoCodecEnc/AgoraVideoEncoderExtension.framework/AgoraVideoEncoderExtension
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VideoCodecEnc/video_enc.framework/video_enc
+/Users/nikshita/hackutd/ten_four/frontend/build/macos/Build/Products/Debug/XCFrameworkIntermediates/AgoraRtcEngine_macOS/VirtualBackground/AgoraVideoSegmentationExtension.framework/AgoraVideoSegmentationExtension
