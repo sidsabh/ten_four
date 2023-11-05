@@ -269,16 +269,25 @@ class _PublicChannel extends State<PublicChannel> {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-
-
             Spacer(),
             Text(
                 "Public Channel",
-                style: TextStyle(height: 3, fontSize: 40),
+                style: TextStyle(height: 3, fontSize: 20),
               ),
             Image.asset(
               'assets/sound_waves.png',
             ),
+            Spacer(),
+            Image.asset(
+              'assets/microphone.png',
+            ),
+            Text(
+              "Members",
+              // style: TextStyle(height: 3, fontSize: 40, fontWeight: bold),
+            ),
+            Image.asset(
+              'assets/divider.png',
+            )
             // Spacer(),
           ],
         ),

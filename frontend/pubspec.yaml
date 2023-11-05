@@ -61,6 +61,8 @@ flutter:
     - assets/radio_image.png
     - assets/map.png
     - assets/sound_waves.png
+    - assets/microphone.png
+    - assets/divider.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
