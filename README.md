@@ -18,7 +18,7 @@ We use AuthO to let the user log into the application.|The user can see their lo
 - Flutter/Dart: [docs](https://docs.flutter.dev)
 - Flutter Geolocator Plugin: [docs](https://pub.dev/packages/geolocator)
 - Google Maps API: [docs](https://developers.google.com/maps/documentation/ios-sdk)
-- Express Node: [docs](https://expressjs.com/en/4x/api.html)
+- express.js: [docs](https://expressjs.com/en/4x/api.html)
 - Agora API: [docs](https://docs.agora.io/en/)
 - AuthO: [docs](https://auth0.com/docs/api)
 - Flutter API: [docs](https://api.flutter.dev)
