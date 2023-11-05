@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 // an api request that send location and gets back a token
-const bool isLocal = true;
+const bool isLocal = false;
 const String baseUrl =
-    isLocal ? 'http://localhost:3000' : 'https://tenfour-api.herokuapp.com';
+    isLocal ? 'http://localhost:3000' : 'https://ten-four-sidsabh.vercel.app';
 
 // general get with auth using types
 Future<http.Response> myGet(

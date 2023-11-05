@@ -10,6 +10,7 @@ import 'call.dart';
 import 'components.dart';
 import 'maps.dart';
 import 'api.dart';
+import 'dart:math';
 
 class JoinScreen extends StatefulWidget {
   final Future<void> Function() logoutAction;
@@ -129,15 +130,19 @@ class JoinScreenState extends State<JoinScreen> {
                 width: 250,
                 color: Colors.grey,
                 onPressed: () {
+                  var rng = Random();
                   loadParams().then((value) => {
                         print('values: $value'),
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => Call(
-                                    token: value['token']! ?? '',
-                                    channelName: value['channelName']! ?? '',
-                                    uid: int.parse(value['uid']! ?? '-1'),
+                                    token: '',
+                                    channelName: '',
+                                    uid: rng.nextInt(200),
+                                    // token: value['token']! ?? '',
+                                    // channelName: value['channelName']! ?? '',
+                                    // uid: int.parse(value['uid']! ?? '-1'),
                                   )),
                         )
                       });

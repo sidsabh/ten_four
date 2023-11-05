@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:permission_handler/permission_handler.dart';
 
+
 import 'components.dart';
 
 // String channelName = 'ten_four_test';
@@ -33,8 +34,13 @@ class CallState extends State<Call> {
   late RtcEngine agoraEngine; // Agora engine instance
   bool _isMuted = false; // Indicates if the local user is muted
 
-  String get channelName => widget.channelName;
-  String get token => widget.token;
+  // String get channelName => widget.channelName;
+  // String get token => widget.token;
+  // int get uid => widget.uid;
+
+  String channelName = "please_work";
+  String token = '007eJxTYNDOKeHlrb/E4OJm8GHpGYOsa0tvH6lkl3zqw271a8OyvWUKDOYpyYlmRsaGqRbJJiZJlsZJqcnJ5hbJyRZGSRZGFmaGFsfcUxsCGRnmCrxjYWSAQBCfm6EgJzWxODW+PL8om4EBAONiIaQ=';
+  // int uid = rng.nextInt(200);
   int get uid => widget.uid;
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
