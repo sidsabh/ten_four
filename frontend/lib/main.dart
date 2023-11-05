@@ -239,12 +239,38 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
  runApp(const MyApp());
 }
 
-// Rename your custom widget to avoid conflict with GoogleMap from the package.
+
+Future<Position> _determinePosition() async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  // Test if location services are enabled.
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return Future.error('Location services are disabled.');
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error('Location permissions are denied');
+    }
+  }
+  
+  if (permission == LocationPermission.deniedForever) {
+    return Future.error(
+      'Location permissions are permanently denied, we cannot request permissions.');
+  } 
+  return await Geolocator.getCurrentPosition();
+}
+
 class GoogleMapSample extends StatefulWidget {
   const GoogleMapSample({super.key});
   
@@ -373,15 +399,48 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-class HomeScreen extends StatelessWidget {
- const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+ const HomeScreen({super.key}); 
+
+//  double current_latitude = 0.0;
+//  double current_longitude = 0.0;
+// make an object for state
+
 
  void _onMapCreated(GoogleMapController controller) {
   // Do something with the map controller
   }
-
-
  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late GoogleMapController mapController;
+
+  // LatLng _center = const LatLng(32.991782, -96.750723);
+  double cur_latitude = 0.0;
+  double cur_longitude = 0.0;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserLocation();
+  }
+
+  void _getUserLocation() async {
+    Position position = await _determinePosition();
+
+    setState(() {
+      cur_latitude = position.latitude;
+      cur_longitude = position.longitude;
+    });
+  }
+
+  @override
  Widget build(BuildContext context) {
    return Scaffold(
      backgroundColor: Colors.deepPurple[700],
@@ -405,7 +464,8 @@ class HomeScreen extends StatelessWidget {
               child: GoogleMap(
                 onMapCreated: _onMapCreated,
                 initialCameraPosition: CameraPosition(
-                  target: LatLng(32.991782, -96.750723), // Replace with your desired coordinates
+                  //target: LatLng(32.991782, -96.750723), // Replace with your desired coordinates
+                  target: LatLng(cur_latitude, cur_longitude),
                   zoom: 14.4746,
                 ),
               ),
