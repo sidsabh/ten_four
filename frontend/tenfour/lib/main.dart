@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:auth0_flutter/auth0_flutter.dart';
+import 'call.dart';
 
 const appScheme = 'tenfour';
 
@@ -43,6 +44,15 @@ class Profile extends StatelessWidget {
             await logoutAction();
           },
           child: const Text('Logout'),
+        ),
+        ElevatedButton(
+          onPressed: () async {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Call()),
+            );
+          },
+          child: const Text('Call'),
         ),
       ],
     );

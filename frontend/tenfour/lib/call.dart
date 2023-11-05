@@ -91,6 +91,8 @@ class TenFourState extends State<Call> {
   Future<void> setupVoiceSDKEngine() async {
     // retrieve or request microphone permission
     await [Permission.microphone].request();
+    // make sure microphone permission is granted
+    await Permission.microphone.isGranted;
 
     //create an instance of the Agora engine
     agoraEngine = createAgoraRtcEngine();
