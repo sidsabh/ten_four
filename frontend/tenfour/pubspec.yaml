@@ -39,6 +39,8 @@ dependencies:
   permission_handler: ^11.0.1
   agora_rtc_engine: ^6.2.4
   google_maps_flutter: ^2.1.1
+  geolocator_windows: ^0.2.2
+  geolocator: ^10.1.0
 
 dev_dependencies:
   flutter_test:

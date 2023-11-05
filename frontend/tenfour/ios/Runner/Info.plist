@@ -60,5 +60,7 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need microphone access for uploading audio</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need your location to show on the map</string>
 </dict>
 </plist>

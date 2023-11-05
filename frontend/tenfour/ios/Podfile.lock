@@ -42,6 +42,8 @@ PODS:
     - JWTDecode (= 3.0.1)
     - SimpleKeychain (= 1.0.1)
   - Flutter (1.0.0)
+  - geolocator_apple (1.2.0):
+    - Flutter
   - google_maps_flutter_ios (0.0.1):
     - Flutter
     - GoogleMaps (< 8.0)
@@ -61,6 +63,7 @@ DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - auth0_flutter (from `.symlinks/plugins/auth0_flutter/ios`)
   - Flutter (from `Flutter`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - iris_method_channel (from `.symlinks/plugins/iris_method_channel/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -81,6 +84,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/auth0_flutter/ios"
   Flutter:
     :path: Flutter
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
   google_maps_flutter_ios:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
   iris_method_channel:
@@ -95,6 +100,7 @@ SPEC CHECKSUMS:
   Auth0: 64da28fdc5cd499aa516dc4bfd0ace8efae2c1da
   auth0_flutter: 875e4079e0e9d48aaadd5beadb0b491bf430441b
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
   google_maps_flutter_ios: abdac20d6ce8931f6ebc5f46616df241bfaa2cfd
   GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
   iris_method_channel: 0617c689164d8154c020c50f63ca79f92b8a7b9d

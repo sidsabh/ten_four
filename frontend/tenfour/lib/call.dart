@@ -1,38 +1,26 @@
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'components.dart';
+
+String channelName = 'ten_four_test';
+String token =
+    '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
+int uid = 0; // uid of the local user
 const String appId = '7dca6231e8c44b93becc78cc82b82861';
-
-// an api request that send location and gets back a token
-void getToken() async {
-  // get location
-
-  // send location to api
-  // get token from api
-  // return token
-}
-
-void main() {
-  runApp(const MyApp());
-}
 
 class Call extends StatefulWidget {
   const Call({Key? key}) : super(key: key);
 
   @override
-  TenFourState createState() => TenFourState();
+  CallState createState() => CallState();
 }
 
-class TenFourState extends State<Call> {
-  String channelName = 'ten_four_test';
-  String token =
-      '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
-
-  int uid = 0; // uid of the local user
-
+class CallState extends State<Call> {
   int? _remoteUid; // uid of the remote user
   bool _isJoined = false; // Indicates if the local user has joined the channel
   late RtcEngine agoraEngine; // Agora engine instance
@@ -40,44 +28,76 @@ class TenFourState extends State<Call> {
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>(); // Global key to access the scaffold
 
-  // Build UI
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       scaffoldMessengerKey: scaffoldMessengerKey,
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Get started with Voice Calling'),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.black,
+                Colors.deepPurple,
+                Colors.red,
+              ],
+            ),
           ),
-          body: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            children: [
-              // Status text
-              SizedBox(height: 40, child: Center(child: _status())),
-              // Button Row
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const Spacer(),
               Row(
-                children: <Widget>[
-                  Expanded(
-                    child: ElevatedButton(
-                      child: const Text("Join"),
-                      onPressed: () => {join()},
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // image and texxt
+                  const Text(
+                    '10-4',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
                     ),
+                    textAlign: TextAlign.center,
                   ),
+                  // space
                   const SizedBox(width: 10),
-                  Expanded(
-                    child: ElevatedButton(
-                      child: const Text("Leave"),
-                      onPressed: () => {leave()},
-                    ),
+                  Image.asset(
+                    'assets/radio_image.png',
+                    height: 50,
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ButtonWidget(
+                      title: 'Leave',
+                      width: 250,
+                      color: Colors.grey,
+                      onPressed: () async {
+                        () => {leave()};
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 
-  Widget _status() {
+  Widget statusWidget() {
     String statusText;
 
     if (!_isJoined) {
@@ -161,332 +181,13 @@ class TenFourState extends State<Call> {
   // Clean up the resources when you leave
   @override
   void dispose() async {
-    await agoraEngine.leaveChannel();
     super.dispose();
+    await agoraEngine.leaveChannel();
   }
 
   showMessage(String message) {
     scaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
       content: Text(message),
     ));
-  }
-}
-
-// Rename your custom widget to avoid conflict with GoogleMap from the package.
-class GoogleMapSample extends StatefulWidget {
-  const GoogleMapSample({super.key});
-
-  @override
-  _GoogleMapSampleState createState() => _GoogleMapSampleState();
-}
-
-class _GoogleMapSampleState extends State<GoogleMapSample> {
-  late GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(-33.86, 151.20);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Maps Sample App'),
-        backgroundColor: Colors.green[700],
-      ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
-        ),
-      ),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '10-4',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-//LandingPage
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.black,
-              Colors.deepPurple,
-              Colors.red,
-            ],
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Spacer(),
-            Text(
-              '10-4',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 80,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Spacer(),
-            Image.asset(
-              'assets/radio_image.png',
-              height: 250,
-            ),
-            Spacer(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50),
-              child: ElevatedButton(
-                onPressed: () {
-                  //switch to a new screen
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.grey[850], // Button background color
-                  onPrimary: Colors.white, // Button text color
-                  minimumSize:
-                      Size(double.infinity, 50), // Set the button's size
-                ),
-                child: Text(
-                  'enter',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-            Spacer(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  void _onMapCreated(GoogleMapController controller) {
-    // Do something with the map controller
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepPurple[700],
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.black,
-              Colors.deepPurple,
-              Colors.red,
-            ],
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 300,
-              child: GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(32.991782,
-                      -96.750723), // Replace with your desired coordinates
-                  zoom: 14.4746,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              // SwitchWidget(value: false, onChanged: (bool newValue) {},),
-              // SwitchWidget(value: false, onChanged: (bool newValue) {},),
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              HomeScreen()), // Replace NewPage with your destination page
-                    );
-                  },
-                  child: Image.asset(
-                    'assets/icon.png',
-                    height: 65,
-                  ),
-                ),
-                SizedBox(
-                    width:
-                        20), // Give some space between the avatar and the switch
-                SwitchWidget(
-                  value: false, // The current state of the switch
-                  onChanged: (bool value) {},
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            ButtonWidget(
-                title: 'join',
-                width: 250,
-                color: Colors.grey,
-                onPressed: () {}),
-            InfoText(text: '4 people broadcasting'),
-            ButtonWidget(
-                title: 'notify',
-                width: 265,
-                color: Colors.grey,
-                onPressed: () {}),
-            InfoText(text: '10 people monitoring'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-//Make a switch that toggles back and forth when pressed (on/off)
-class SwitchWidget extends StatefulWidget {
-  final bool value;
-  final ValueChanged<bool> onChanged;
-
-  const SwitchWidget({
-    Key? key,
-    required this.value,
-    required this.onChanged,
-  }) : super(key: key);
-
-  @override
-  _SwitchWidgetState createState() => _SwitchWidgetState();
-}
-
-class _SwitchWidgetState extends State<SwitchWidget> {
-  bool _currentValue = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentValue =
-        widget.value; // Initialize switch state based on passed value
-  }
-
-  // Clean up the resources when you leave
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Switch(
-          value: _currentValue,
-          onChanged: (bool newValue) {
-            setState(() {
-              _currentValue = newValue; // Update the switch state
-            });
-            widget
-                .onChanged(newValue); // Notify the parent widget of the change
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class ButtonWidget extends StatelessWidget {
-  final String title;
-  final double width;
-  final Color color;
-  final VoidCallback onPressed;
-
-  const ButtonWidget({
-    Key? key,
-    required this.title,
-    required this.width,
-    required this.color,
-    required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      margin: EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          primary: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        ),
-        child: Text(title.toUpperCase()),
-      ),
-    );
-  }
-}
-
-class InfoText extends StatelessWidget {
-  final String text;
-
-  const InfoText({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.circle, size: 12.0, color: Colors.orange),
-          SizedBox(width: 8.0),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize:
-                  15, // Use fontSize if provided, otherwise default to 14.0
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
