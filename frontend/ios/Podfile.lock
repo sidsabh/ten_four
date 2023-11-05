@@ -34,6 +34,14 @@ PODS:
   - AgoraRtcEngine_iOS/VirtualBackground (4.2.3)
   - AgoraRtcEngine_iOS/VQA (4.2.3)
   - Flutter (1.0.0)
+  - google_maps_flutter_ios (0.0.1):
+    - Flutter
+    - GoogleMaps (< 8.0)
+  - GoogleMaps (7.4.0):
+    - GoogleMaps/Maps (= 7.4.0)
+  - GoogleMaps/Base (7.4.0)
+  - GoogleMaps/Maps (7.4.0):
+    - GoogleMaps/Base
   - iris_method_channel (0.0.1):
     - Flutter
   - permission_handler_apple (9.1.1):
@@ -42,6 +50,7 @@ PODS:
 DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - Flutter (from `Flutter`)
+  - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - iris_method_channel (from `.symlinks/plugins/iris_method_channel/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
@@ -49,12 +58,15 @@ SPEC REPOS:
   trunk:
     - AgoraIrisRTC_iOS
     - AgoraRtcEngine_iOS
+    - GoogleMaps
 
 EXTERNAL SOURCES:
   agora_rtc_engine:
     :path: ".symlinks/plugins/agora_rtc_engine/ios"
   Flutter:
     :path: Flutter
+  google_maps_flutter_ios:
+    :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
   iris_method_channel:
     :path: ".symlinks/plugins/iris_method_channel/ios"
   permission_handler_apple:
@@ -65,9 +77,11 @@ SPEC CHECKSUMS:
   AgoraIrisRTC_iOS: 84ae4f5824d68480d1215cbdd8db261549a7c94e
   AgoraRtcEngine_iOS: eb0a7e87dbc9e818b267d413b48f76a57959e6f4
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  google_maps_flutter_ios: abdac20d6ce8931f6ebc5f46616df241bfaa2cfd
+  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
   iris_method_channel: 0617c689164d8154c020c50f63ca79f92b8a7b9d
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
 
-PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
 
 COCOAPODS: 1.14.2

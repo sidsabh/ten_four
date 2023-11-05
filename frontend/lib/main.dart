@@ -238,11 +238,47 @@
 // }
 
 import 'package:flutter/material.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
  runApp(const MyApp());
 }
+
+// Rename your custom widget to avoid conflict with GoogleMap from the package.
+class GoogleMapSample extends StatefulWidget {
+  const GoogleMapSample({super.key});
+  
+  @override
+  _GoogleMapSampleState createState() => _GoogleMapSampleState();
+}
+
+class _GoogleMapSampleState extends State<GoogleMapSample> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(-33.86, 151.20);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Maps Sample App'),
+        backgroundColor: Colors.green[700],
+      ),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 11.0,
+        ),
+      ),
+    );
+  }
+}
+
 
 
 class MyApp extends StatelessWidget {
@@ -340,6 +376,10 @@ class _MyHomePageState extends State<MyHomePage> {
 class HomeScreen extends StatelessWidget {
  const HomeScreen({super.key});
 
+ void _onMapCreated(GoogleMapController controller) {
+  // Do something with the map controller
+  }
+
 
  @override
  Widget build(BuildContext context) {
@@ -360,11 +400,43 @@ class HomeScreen extends StatelessWidget {
        child: Column(
          mainAxisAlignment: MainAxisAlignment.center,
          children: <Widget>[
-           Image.asset(
-             'assets/map.png',
-             height: 250,
+           Container(
+              height: 300,
+              child: GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(32.991782, -96.750723), // Replace with your desired coordinates
+                  zoom: 14.4746,
+                ),
+              ),
+            ),
+           SizedBox(height: 20),
+           Row(
+            // SwitchWidget(value: false, onChanged: (bool newValue) {},),
+            // SwitchWidget(value: false, onChanged: (bool newValue) {},),
+            mainAxisSize: MainAxisSize.min, 
+            children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()), // Replace NewPage with your destination page
+                      );
+                    },
+                    child: Image.asset(
+                      'assets/icon.png',
+                      height: 65,
+                    ),
+                  ),
+                  SizedBox(width: 20), // Give some space between the avatar and the switch
+                  SwitchWidget(
+                    value: false, // The current state of the switch
+                    onChanged: (bool value) {
+                    },
+                  ),
+                ],
            ),
-           ButtonWidget(title: 'sign in', width: 200, color: Colors.green, onPressed: () {}),
+           SizedBox(height: 20),
            ButtonWidget(title: 'join', width:250, color: Colors.grey, onPressed: () {}),
            InfoText(text: '4 people broadcasting'),
            ButtonWidget(title: 'notify', width:265, color: Colors.grey, onPressed: () {}),
@@ -374,6 +446,48 @@ class HomeScreen extends StatelessWidget {
      ),
    );
  }
+}
+
+//Make a switch that toggles back and forth when pressed (on/off)
+class SwitchWidget extends StatefulWidget {
+  final bool value;
+  final ValueChanged<bool> onChanged;
+
+  const SwitchWidget({
+    Key? key,
+    required this.value,
+    required this.onChanged,
+  }) : super(key: key);
+
+  @override
+  _SwitchWidgetState createState() => _SwitchWidgetState();
+}
+
+class _SwitchWidgetState extends State<SwitchWidget> {
+  bool _currentValue = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentValue = widget.value; // Initialize switch state based on passed value
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Switch(
+          value: _currentValue,
+          onChanged: (bool newValue) {
+            setState(() {
+              _currentValue = newValue; // Update the switch state
+            });
+            widget.onChanged(newValue); // Notify the parent widget of the change
+          },
+        ),
+      ],
+    );
+  }
 }
 
 
@@ -431,9 +545,15 @@ class InfoText extends StatelessWidget {
      child: Row(
        mainAxisAlignment: MainAxisAlignment.center,
        children: [
-         Icon(Icons.circle, size: 10.0, color: Colors.orange),
+         Icon(Icons.circle, size: 12.0, color: Colors.orange),
+         
          SizedBox(width: 8.0),
-         Text(text),
+         Text(
+            text,
+            style: TextStyle(
+              fontSize: 15,  // Use fontSize if provided, otherwise default to 14.0
+            ),
+         ),
        ],
      ),
    );
