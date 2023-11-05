@@ -18,6 +18,7 @@ We use AuthO to let the user log into the application.|The user can see their lo
 - Agora API: [docs](https://docs.agora.io/en/)
 - AuthO: [docs](https://auth0.com/docs/api)
 - Flutter/Dart: [docs](https://docs.flutter.dev)
+- Express Node: [docs](https://expressjs.com/en/4x/api.html)
 
 ## Credits
 
