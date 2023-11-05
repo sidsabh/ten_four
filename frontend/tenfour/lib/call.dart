@@ -108,9 +108,9 @@ class CallState extends State<Call> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Image.asset(
-                  'assets/divider.png',
-                ),
+                // Image.asset(
+                //   'assets/divider.png',
+                // ),
                 // const Text(
                 //   "Public Channel",
                 //   style: TextStyle(height: 3, fontSize: 40),
