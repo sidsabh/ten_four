@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
 
-import 'api.dart';
-import 'join.dart';
 import 'components.dart';
-import 'home.dart';
-import 'main.dart';
-
-/// -----------------------------------
-///           Profile Widget
-/// -----------------------------------
 
 class Profile extends StatelessWidget {
   final Future<void> Function() logoutAction;

@@ -24,6 +24,7 @@ class CallState extends State<Call> {
   int? _remoteUid; // uid of the remote user
   bool _isJoined = false; // Indicates if the local user has joined the channel
   late RtcEngine agoraEngine; // Agora engine instance
+  bool _isMuted = false; // Indicates if the local user is muted
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>(); // Global key to access the scaffold
@@ -64,6 +65,7 @@ class CallState extends State<Call> {
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    
                     // space
                     const SizedBox(width: 10),
                     Image.asset(
@@ -72,7 +74,56 @@ class CallState extends State<Call> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                Image.asset(
+                  'assets/divider.png',
+                ),
+                Image.asset(
+                  'assets/sound_waves.png',
+                  height: 300,
+                ),
+                
+                Text(
+                  'Public Channel: $channelName',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Image.asset(
+                  'assets/divider.png',
+                ),
+                // const Text(
+                //   "Public Channel",
+                //   style: TextStyle(height: 3, fontSize: 40),
+                // ),
+                // custom button with image
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isMuted = !_isMuted;
+                    });
+                    agoraEngine.muteLocalAudioStream(_isMuted);
+                  },
+                  child: Image.asset(
+                    _isMuted
+                        ? 'assets/muted_microphone.png'
+                        : 'assets/microphone.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                ),
+                // const Text(
+                //   "Members",
+                //   textAlign: TextAlign.center,
+                //   style: TextStyle(
+                //     color: Colors.white,
+                //     fontSize: 20,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                const SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Column(
@@ -90,9 +141,8 @@ class CallState extends State<Call> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
                 statusWidget(),
-                const Spacer(),
+                const SizedBox(height: 30),
               ],
             ),
           ),
@@ -117,7 +167,7 @@ class CallState extends State<Call> {
       textAlign: TextAlign.center,
       style: const TextStyle(
         color: Colors.white,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: FontWeight.bold,
       ),
     );

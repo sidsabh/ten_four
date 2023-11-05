@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components.dart';
+
 class MyHomePage extends StatelessWidget {
   final Future<void> Function() loginAction;
   final String loginError;
@@ -47,13 +49,22 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  ElevatedButton(
+                  ButtonWidget(
+                    title: 'Login',
+                    width: 250,
+                    color: Colors.blue,
                     onPressed: () async {
                       await loginAction();
                     },
-                    child: const Text('Login'),
                   ),
-                  Text(loginError ?? ''),
+                  Text(
+                    loginError,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
