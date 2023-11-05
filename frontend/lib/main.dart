@@ -272,7 +272,7 @@ class _PublicChannel extends State<PublicChannel> {
             Spacer(),
             Text(
                 "Public Channel",
-                style: TextStyle(height: 3, fontSize: 20),
+                style: TextStyle(height: 3, fontSize: 40),
               ),
             Image.asset(
               'assets/sound_waves.png',
@@ -280,10 +280,11 @@ class _PublicChannel extends State<PublicChannel> {
             Spacer(),
             Image.asset(
               'assets/microphone.png',
+              height: 50,
             ),
             Text(
               "Members",
-              // style: TextStyle(height: 3, fontSize: 40, fontWeight: bold),
+              style: TextStyle(height: 3, fontSize: 40),
             ),
             Image.asset(
               'assets/divider.png',
