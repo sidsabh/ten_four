@@ -15,9 +15,20 @@ class Call extends StatefulWidget {
   TenFourState createState() => TenFourState();
 }
 
+// an api request that send location and gets back a token
+void getToken() async {
+  // get location
+  
+
+  // send location to api
+  // get token from api
+  // return token
+}
+
 class TenFourState extends State<Call> {
   String channelName = 'ten_four_test';
-  String token = '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
+  String token =
+      '007eJxTYMitECxis9h/d78+qzqn8vO87se/TYU5eO+eiDFofrbxSbMCg3lKcqKZkbFhqkWyiUmSpXFSanKyuUVysoVRkoWRhZlh4zy31IZARgZ72X9MjAwQCOLzMpSk5sWn5ZcWxZekFpcwMAAA+Twh6g==';
 
   int uid = 0; // uid of the local user
 
@@ -91,8 +102,6 @@ class TenFourState extends State<Call> {
   Future<void> setupVoiceSDKEngine() async {
     // retrieve or request microphone permission
     await [Permission.microphone].request();
-    // make sure microphone permission is granted
-    await Permission.microphone.isGranted;
 
     //create an instance of the Agora engine
     agoraEngine = createAgoraRtcEngine();
@@ -131,7 +140,6 @@ class TenFourState extends State<Call> {
       clientRoleType: ClientRoleType.clientRoleBroadcaster,
       channelProfile: ChannelProfileType.channelProfileCommunication,
     );
-    // print agoraEngine
 
     await agoraEngine.joinChannel(
       token: token,

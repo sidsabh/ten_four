@@ -17,7 +17,8 @@ class Profile extends StatelessWidget {
   final Future<void> Function() logoutAction;
   final UserProfile? user;
 
-  const Profile(this.logoutAction, this.user, {final Key? key}) : super(key: key);
+  const Profile(this.logoutAction, this.user, {final Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,8 @@ class Login extends StatelessWidget {
   final Future<void> Function() loginAction;
   final String loginError;
 
-  const Login(this.loginAction, this.loginError, {final Key? key}) : super(key: key);
+  const Login(this.loginAction, this.loginError, {final Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +138,8 @@ class _MyAppState extends State<MyApp> {
     });
 
     try {
-      final Credentials credentials = await auth0.webAuthentication(scheme: appScheme).login();
+      final Credentials credentials =
+          await auth0.webAuthentication(scheme: appScheme).login();
 
       setState(() {
         isBusy = false;
@@ -164,7 +167,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    auth0 = Auth0('dev-b28y4sop0va1xoas.us.auth0.com', 'KgTKTK8639hWDLi4z58LT6KyT5hvdv8q');
+    auth0 = Auth0('dev-b28y4sop0va1xoas.us.auth0.com',
+        'KgTKTK8639hWDLi4z58LT6KyT5hvdv8q');
     errorMessage = '';
   }
 }
